@@ -10,9 +10,9 @@ void covid(){
     int x, y;
     int i = 0;
 
-    int wid1 = initwindow(600, 300);
-    int wid2 = initwindow(300, 400);
-    int wid3 = initwindow(200, 600);
+    int wid1 = initwindow(600, 300, "Covid-19",rand() % getmaxwidth(), rand() % getmaxheight());
+    int wid2 = initwindow(300, 400, "Covid-19",rand() % getmaxwidth(), rand() % getmaxheight());
+    int wid3 = initwindow(200, 600, "Covid-19",rand() % getmaxwidth(), rand() % getmaxheight());
 
     do{
 
