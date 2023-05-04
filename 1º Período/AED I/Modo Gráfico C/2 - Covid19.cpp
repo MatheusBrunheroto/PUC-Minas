@@ -7,40 +7,42 @@
 void covid(){
 
     srand(time(NULL));
-    int x, y;
-    int i = 0;
 
-    int wid1 = initwindow(600, 300, "Covid-19",rand() % getmaxwidth(), rand() % getmaxheight());
-    int wid2 = initwindow(300, 400, "Covid-19",rand() % getmaxwidth(), rand() % getmaxheight());
-    int wid3 = initwindow(200, 600, "Covid-19",rand() % getmaxwidth(), rand() % getmaxheight());
+    int i = 0;
+    int x1 = rand() % 600, y1 = rand() % 600;
+    int x2 = rand() % 600, y2 = rand() % 600;
+    int x3 = rand() % 600, y3 = rand() % 600;
+
+    int wid1 = initwindow(x1, y1, "Covid-19",rand() % getmaxwidth(), rand() % getmaxheight());
+    int wid2 = initwindow(x2, y2, "Covid-19",rand() % getmaxwidth(), rand() % getmaxheight());
+    int wid3 = initwindow(x3, y3, "Covid-19",rand() % getmaxwidth(), rand() % getmaxheight());
 
     do{
 
-        x = rand() % 600;
-        y = rand() % 600;
         if(i % 2 == 0){
-            putpixel(x,y,2);
-            putpixel(x,y,10);
             setcurrentwindow(wid1);
+            putpixel(rand() % x1, rand() % y1 ,2);
+            putpixel(rand() % x1, rand() % y1, 10);
         }
         else if(i % 3 == 0){
-            putpixel(x,y,2);
-            putpixel(x,y,10);
             setcurrentwindow(wid2);
+            putpixel(rand() % x2, rand() % y2 ,2);
+            putpixel(rand() % x2, rand() % y2, 10);
         }
         else{
-            putpixel(x,y,2);
-            putpixel(x,y,10);
             setcurrentwindow(wid3);
+            putpixel(rand() % x3, rand() % y3 ,2);
+            putpixel(rand() % x3, rand() % y3, 10);
         }
 
-        if(i > 100000){
+        if(i > 50000){
                 covid(); // Função recursiva sem condição de parada
         } else {}
 
         i++;
 
     }while(!kbhit());
+
     closegraph();
 }
 
