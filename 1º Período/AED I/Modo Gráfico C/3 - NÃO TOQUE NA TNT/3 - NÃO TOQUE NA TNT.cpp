@@ -26,7 +26,7 @@
     closegraph();
 
     initwindow(734,538,"BOOOOOOOOOOM!",0,0);
-     readimagefile("nuke.jpg", 0, 0, 734, 538);
+    readimagefile("nuke.jpg", 0, 0, 734, 538);
     do{
 
         if(rand() % 55 == 0){
