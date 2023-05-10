@@ -36,8 +36,9 @@ void cores (int janela, int seta){
     int cor = 0, tamanho = 5;
     int tecla_0, tecla = esquerda /* Valor Inicial */, x, y;
 
-    printf("Pressione as setas para cima ou baixo para selecionar entre cores e formatos.\n");
-    printf("Pressione as setas para a esquerda ou direita para alternar entre os possíveis valores da opção selecionada\n");
+    printf("Pressione as setas para cima ou baixo para aumentar ou diminuir o tamanho do formato.\n");
+    printf("Pressione as setas para a esquerda ou direita para alternar entre as cores\n");
+    printf("O botão esquerdo do mouse desenha um círculo, e o esquerdo desenha um quadrado\n");
     printf("(Qualquer tecla que não seja as setas irão fechar o programa!)\n");
     printf("\nPressione ENTER para continuar ...");
     getchar();
