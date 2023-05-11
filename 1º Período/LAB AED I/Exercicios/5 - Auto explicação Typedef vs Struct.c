@@ -2,7 +2,8 @@
 
 // Vamos declarar um ser humano usando typedef
 typedef struct{
-    char * nome;
+    char * nome; /* char nome[] não funciona pois struct precisa de um espaço ja definido, 
+                    e o ponteiro não está apontando para um valor dentro da struct */
     int idade;
     int peso;
 }humano; // Novo tipo de variável não primitiva, diferente de uma variável
