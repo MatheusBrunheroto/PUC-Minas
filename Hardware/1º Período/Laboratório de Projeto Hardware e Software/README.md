@@ -8,7 +8,6 @@
             <b> Simulações Tinkercad </b>→ Simulador de Circuitos que utilizei para refinar e armazenar simulações dos códigos feitos em LPHS e criar projetos separados para praticar. <br>
         </p>
         <h5> Meu perfil pode ser acessado clicando em → <a href = "https://www.tinkercad.com/users/bd2Ti2WDJJd?category=circuits&sort=likes&view_mode=default" > Tinkercad.</a> <br> </h5>
-        <hr>
     </body>
 </html>
 
