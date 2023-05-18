@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <title> Enem Oficial </title>
+        <script>
+            function alerta(x){
+            
+                if(x == 14){
+                    alert("Parabéns");
+                    var ok = confirm("Deseja receber seu prêmio?"); 
+
+                    if(ok==true){
+                        window.open("https://www.youtube.com/watch?v=-0hmmX96QvY");
+                        window.close();    
+                    }
+                    else{
+                        alert("KKKKKKK?");
+                        window.close();
+                    }
+                }
+                else{
+                    alert("Burro pra CARALHO!");
+                    window.open("https://www.youtube.com/watch?v=bF27ZucAoWs");
+                    window.close();    
+                }
+            }
+          </script>
+    </head>
+
+    <body>
+       
+        <div align = "left">
+        <img src = "enem.png" width = "100px" height="auto">
+         </div>       
+        <h3 align = "center"> 6 + 2 x 4 = ? </h3>
+        <p align = "center"><b>Resposta</b></p> 
+                      
+                    
+    
+        <table align = "center">
+            <tr>
+                <td>
+                    <button type = "button" onclick = "alerta(14)">14</button>
+                </td>
+                <td>
+                    <button type = "button" onclick = "alerta(32)">32</button>
+                </td>
+            </tr>
+
+    </body>
+</html>
