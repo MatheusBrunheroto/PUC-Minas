@@ -1,0 +1,13 @@
+hr{
+	border-color:rgb(31,112,196);
+}
+
+#fonte{
+	font-family: Arial;
+}
+
+button {
+	background:rgb(255,255,255);
+	color:rgb(31,112,196) ;
+	border: 0px;
+}
