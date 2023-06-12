@@ -1,9 +1,9 @@
+#include "struct.h"
+#include "sistema.h" // Para redirecionar para SISTEMA
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <graphics.h>
-
-#include "exibicao.h"
-#include "struct.h"
 
 #include "entrada.h"
 

@@ -1,27 +1,30 @@
-#include <stdio.h>
-#include <stdbool.h>
-#include <string.h>
-#include <locale.h>
-#include <graphics.h>
-
 #include "struct.h"
 #include "entrada.h"
+
 
 /* Projeto Final AED I Matheus Brunheroto
    Objetivo : criar um sistema de venda de carros utilizando
    laços condicionais e de repetição, estruturas de alocação estática,
-   registros e funções.
+   registros, funções e modo gráfico.
    No meu projeto será possível adicionar carros para o seu sistema, como
    administrador e como usuário comprar. Isso enquanto sua execução não for interrompida,
    pois o projeto não requer armazenamento em memória secundária. Terei que
    usar o básico dos ponteiros, pois nesse caso não faz sentido trabalhar
    sem eles.
 
+   Conforme fui fazendo o código, notei a necessidade de dividir as funções em
+   headers, pois estava difícil trabalhar em algo específico dentro de um ambiente
+   com mais de 600 linhas de código.
+
    Headers ->
               struct.h
-              Entrada.h
-              Exibicao.h
+              entrada.h
+              sistema.h
+              usuario.h
+              administrador.h
    */
+
+// Criar um loop que percorre a ListaDeCarros e verifica se tem um Igual aos registrados com imagem, excluindo o preço
 
 
 int main(){
@@ -42,13 +45,23 @@ int main(){
         {"Honda", "Accord", 2023, 148210, false, false},
     };
 
-
     Entrada(ListaDeCarros);
     return 0;
 
 }
 
+/* Carros de Demonstração : (A marca, o Nome e o Ano devem ser iguais !!)
 
-// - GERAL -
+        {"Fiat", "Punto", 2014},
+        {"Fiat", "Palio", 2013},
+        {"Chevrolet", "Onix", 2020},
+        {"Chevrolet", "Spin", 2013},
+        {"Ford", "Eco Sport", 2016},
+        {"Ford", "Focus", 2014},
+        {"Volkswagen", "Polo", 2018},
+        {"Volkswagen", "Golf", 2016},
+        {"Honda", "City", 2013},
+        {"Honda", "Fit", 2010},
 
+*/
 
