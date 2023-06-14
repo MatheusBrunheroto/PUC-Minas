@@ -1,14 +1,23 @@
-#include "entrada.h" // Para voltar para a entrada se o usuario desejar
 #include "struct.h"
+#include "entrada.h"
+#include "administrador.h"
+#include "usuario.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
 
 #include "sistema.h"
 
-#include "usuario.h"
-#include "administrador.h"
+
+
+
+
+/* A função "Tamanho" recebe o vetor ListadeCarros, e através dele verifica
+   os carros de (0 - 20). Eu defini como padrão de carro inexistente
+   o ano = 0. Então todo carro cujo ano = 0 é invalido e o
+   comando 'break' é executado. */ // ORT
 
 int Tamanho(carro * Disponiveis){
 
@@ -26,12 +35,30 @@ int Tamanho(carro * Disponiveis){
 }
 
 
-void LimpaTela(){
-    printf("Pressione ENTER para continuar ...");
-    getchar();
-    getchar();
-    system("cls");                                // Talvez isso não funcione em todos os compiladores / sistemas operacionais
+
+void LimpaTela(bool visualizacao){
+
+    /* Exibição = 0, Significa que o usuário está comprando um carro,
+     ou um administrador está removendo um carro. Pois requisita
+     a confirmação extra. E nos casos de Visualização de carros
+     por exemplo, não é requisitado a confirmação extra. */
+
+    if(visualizacao == false){
+        printf("Pressione ENTER para continuar ...");
+        getchar();
+        getchar();
+        system("cls");                                // Talvez isso não funcione em todos os compiladores / sistemas operacionais
+    }
+    else{
+        system("cls");
+    }
+
 }
+
+
+
+/* A função "Sistema" mostra as primeiras opções após a entrada no sistema, e executa
+   as opções determinadas pelos números na tela. */ // ORT
 
 void Sistema(carro * ListaDeCarros){
     int opcao;
@@ -44,7 +71,7 @@ void Sistema(carro * ListaDeCarros){
         printf("Opção -> ");
         scanf("%i",&opcao);
 
-        LimpaTela();
+        LimpaTela(false);
 
         switch(opcao){
             case 1: Usuario(ListaDeCarros);
@@ -56,54 +83,30 @@ void Sistema(carro * ListaDeCarros){
             case 3: Entrada(ListaDeCarros);
             break;
 
-            default: printf("\nOpção Inválida !! \n"); LimpaTela();
+            default: printf("\nOpção Inválida !! \n"); LimpaTela(false);
         }
 
     }while(opcao != 3);
 }
 
+
+
+/* A função "Exibe" mostra a tabela dos carros Disponíveis. A partir de valores alimentados na função
+   é possível determinar se a exibição é de um usuário ou de um administrador, com isso, é possível configurá-la
+   de formas diferentes. Além disso, com as variáveis .vendido e .novo, é possível afirmar se o carro
+   é novo ou vendido, sendo que "vendido" sobrepõe "novo". */ // ORT
+
 void Exibe(carro * Disponiveis, bool Usuario, float dinheiro){
-
-    carro AUX;
-    int tamanho = Tamanho(Disponiveis);
-    int i, j;
-
-    // Organizando em Ordem Alfabética, utilizei o princípio do 'Bubble Sort' pois nesse caso são poucos valores
-
-    for (i = 0; i < tamanho; i++) {
-        for (j = 0; j < tamanho - 1; j++) {
-
-            if (strcmp(Disponiveis[j].marca, Disponiveis[j + 1].marca) > 0) {        //   (z) > (a), portanto é necessário subir Palavra2, e descer Palavra1
-
-                AUX = Disponiveis[j];
-                Disponiveis[j] = Disponiveis[j + 1];
-                Disponiveis[j + 1] = AUX;
-
-            }
-            else if (strcmp(Disponiveis[j].marca, Disponiveis[j + 1].marca) == 0) {  //   (z) == (a), portanto é necessário avaliar o modelo
-
-                if(strcmp(Disponiveis[j].modelo, Disponiveis[j + 1].modelo) > 0){
-
-                    AUX = Disponiveis[j];
-                    Disponiveis[j] = Disponiveis[j + 1];
-                    Disponiveis[j + 1] = AUX;
-
-                }
-            }
-
-        }
-    }
-
-    LimpaTela();
 
     if(Usuario == true)
         printf("Dinheiro -> R$ %0.2f\n\n", dinheiro);
 
     printf("       Marca       |         Modelo       |  Ano  | Preço \n\n");
 
+    int i;
     for(i = 0; i < 20; i++){
 
-        if(Disponiveis[i].ano == 0)                    // Não imprimir Carros não registrados acima do valor 10
+        if(Disponiveis[i].ano == 0)
             break;
 
         if(i >= 9){
@@ -123,9 +126,9 @@ void Exibe(carro * Disponiveis, bool Usuario, float dinheiro){
 
 
         if(Disponiveis[i].vendido == true)
-            printf("%10s","(Vendido)");
+            printf("%12s","(Vendido)");
         else if(Disponiveis[i].novo == true)
-            printf("%10s", "(Novo)");
+            printf("%12s", "(Novo)");
 
         printf("\n");
 

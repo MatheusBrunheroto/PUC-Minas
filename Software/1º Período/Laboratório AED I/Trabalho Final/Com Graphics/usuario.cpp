@@ -1,10 +1,18 @@
 #include "struct.h"
 #include "sistema.h"
+#include "exibicao.h"
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 
 #include "usuario.h"
 
+
+/* A função "Usuario" mostra as primeiras opções após a entrada como usuário, e executa
+   as opções determinadas pelos números na tela. Além disso, conta com um sistema de
+   dinheiro, que é resetado toda vez que o usuário volta para o menu principal */
 
 void Usuario(carro * Disponiveis){
 
@@ -13,7 +21,7 @@ void Usuario(carro * Disponiveis){
 
     printf("Insira seu dinheiro -> ");
     scanf("%f",&dinheiro);
-    LimpaTela();
+    LimpaTela(false);
 
 
     do{
@@ -33,67 +41,98 @@ void Usuario(carro * Disponiveis){
             case 2: VisualizarUsuario(Disponiveis);
             break;
 
-            case 3: LimpaTela(); Sistema(Disponiveis);
+            case 3: LimpaTela(false); Sistema(Disponiveis);
             break;
 
-            default:  printf("\nOpção Inválida !! \n"); LimpaTela();
+            default:  printf("\nOpção Inválida !! \n"); LimpaTela(false);
         }
 
-    }while(opcao != 2);
+    }while(opcao != 3);
 }
+
+// PENDENTE
 
 void VisualizarUsuario(carro * Disponiveis){
 
-    int opcao;
+    char opcaoCHAR[2];
+    int  opcaoINT;
     int tamanho = Tamanho(Disponiveis);
 
-    Exibe(Disponiveis, false, 0);
-    printf("[S] - Sair \n\n\n",4);
-    printf("Opção -> ");
-    scanf("%i",&opcao);
+    while(strcmp(opcaoCHAR,"s") != 0){
 
-    if(opcao != 83 || opcao != 115){
+        LimpaTela(true);
+        Exibe(Disponiveis, false, 0);
+        printf("[S] - Sair \n\n\n",4);
 
-        if(opcao <= tamanho){
-            // MOSTRAR CARRO
-        }
+        printf("Opção -> ");
+        scanf("%s", opcaoCHAR);
+        opcaoCHAR[0] = tolower(opcaoCHAR[0]);
+
+
+        if(strcmp(opcaoCHAR,"s") != 0)
+            opcaoINT = atoi(opcaoCHAR);    // Converter número em String para Int
         else
+            break;
+
+
+        if(opcaoINT <= tamanho){
+            FotosCarros(Disponiveis,opcaoINT);
+        }
+        else{
+            getchar();
             printf("\nCarro Inexistente !!\n");
+            printf("Pressione ENTER para continuar ...");
+            getchar();
+        }
 
     }
 
-    LimpaTela();
+    system("cls");
+
 }
 
 
+// PENDENTE
+
 float ComprarUsuario(carro * Disponiveis, float dinheiro){
 
-    int opcao;
+    char opcaoCHAR[2];
+    int  opcaoINT;
     int tamanho = Tamanho(Disponiveis);
 
-    Exibe(Disponiveis, true, dinheiro);
-    printf("[S] - Sair \n\n\n",4);
-    printf("Opção -> ");
-    scanf("%i",&opcao);
+    while(strcmp(opcaoCHAR,"s") != 0){
 
-    if(opcao != 83 || opcao != 115){
+        LimpaTela(false);
+        Exibe(Disponiveis, true, dinheiro);
+        printf("[S] - Sair \n\n\n",4);
 
-        if(opcao <= tamanho){
+        printf("Opção -> ");
+        scanf("%s", opcaoCHAR);
+        opcaoCHAR[0] = tolower(opcaoCHAR[0]);
 
-            if(Disponiveis[opcao - 1].vendido == true)
+        if(strcmp(opcaoCHAR,"s") != 0)
+            opcaoINT = atoi(opcaoCHAR);    // Converter número em String para Int
+        else
+            break; // Da pra botar isso tudo em outra função?
+
+        if(opcaoINT <= tamanho){
+
+            if(Disponiveis[opcaoINT - 1].vendido == true)
                 printf("\nO Carro ja foi vendido !!\n");
-            else if(dinheiro < Disponiveis[opcao-1].preco)
+            else if(dinheiro < Disponiveis[opcaoINT-1].preco)
                 printf("\nDinheiro Insuficiente !!\n");
             else{
-                Disponiveis[opcao - 1].vendido = true;
-                dinheiro = dinheiro - Disponiveis[opcao - 1].preco;
+                Disponiveis[opcaoINT - 1].vendido = true;
+                dinheiro = dinheiro - Disponiveis[opcaoINT - 1].preco;
             }
+
         }
         else
             printf("\nCarro Inexistente !!\n");
 
     }
 
-    LimpaTela();
+    LimpaTela(false);
     return dinheiro;
+
 }

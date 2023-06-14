@@ -6,22 +6,37 @@
 #include "administrador.h"
 
 
+/* A função "Administrador" mostra as primeiras opções após a entrada como administrador,
+   caso a senha seja escrita corretamente, e executa as opções determinadas pelos números na tela. */
+
 void Administrador(carro * CarroADM){
 
     int tamanho = Tamanho(CarroADM);
-    int opcao;                                  // A variável 'opcao' será inicialmente utilizada para inserir a senha, valor que logo após será reciclado.
+    int opcao, i = 0;                                  // A variável 'opcao' será inicialmente utilizada para inserir a senha, valor que logo após será reciclado.    printf("Senha : ");
 
     printf("Senha : ");
-    if(scanf("%i", &opcao) != 0000)
-        while(opcao != 0000){
-            LimpaTela();
+    if(scanf("%i", &opcao) != 1234)
+
+        while(opcao != 1234){
+
+            i++;
+            if(i == 3){
+                LimpaTela(false);
+                Sistema(CarroADM);
+            }
+
+            LimpaTela(false);
             printf("Senha Incorreta !!\n");
             printf("Senha : ");
             scanf("%i", &opcao);
+
         }
-    LimpaTela();
+
+    LimpaTela(false);
+
 
     do{
+
         printf("[1] - Registrar Carro\n");
         printf("[2] - Remover Carro\n");
         printf("[3] - Voltar\n\n");
@@ -36,14 +51,22 @@ void Administrador(carro * CarroADM){
             case 2: RemoverCarroADM(CarroADM);
             break;
 
-            case 3: LimpaTela(); Sistema(CarroADM);
+            case 3: LimpaTela(false); Sistema(CarroADM);
             break;
 
-            default:  printf("\nOpção Inválida !! \n"); LimpaTela();
+            default:  printf("\nOpção Inválida !! \n"); LimpaTela(false);
         }
 
     }while(opcao != 3);
 }
+
+
+
+/* A função "RegistrarCarroADM" requisita do administrador informações sobre o carro que está sendo inserido.
+   O carro inserido está ocupando a posição 'tamanho', que é um valor retornado da função 'Tamanho'. Essa função
+   retorna o tamanho literal da lista de carros e não seus "endereços" em memória estática, portanto é usada
+   dentro do [] do vetor como um "novo endereço", que, na verdade, é o tamanho da lista de carros. E isso só
+   é possível pois, o vetor NovoADM, na verdade, é o endereço da lista de carros. */
 
 void RegistrarCarroADM(carro * NovoADM){
 
@@ -54,7 +77,7 @@ void RegistrarCarroADM(carro * NovoADM){
     float preco;
 
 
-    LimpaTela();
+    LimpaTela(false);
 
     printf("Marca -> ");
     gets(NovoADM[tamanho].marca);
@@ -68,24 +91,28 @@ void RegistrarCarroADM(carro * NovoADM){
     printf("Preço -> ");
     scanf("%f", &NovoADM[tamanho].preco);
 
-    LimpaTela();
+    LimpaTela(false);
 
     NovoADM[tamanho].novo = true;
 
 }
 
+
+
+ // PENDENTE
 void RemoverCarroADM(carro * RemovidoADM){
 
     int tamanho = Tamanho(RemovidoADM);
     int i, opcao;
     bool Processo = false;
 
+    LimpaTela(false);
     Exibe(RemovidoADM, false, 0);
     printf("[S] - Sair \n\n\n",4);
     printf("Opção -> ");
     scanf("%i",&opcao);
 
-    if(opcao != 83 || opcao != 115){
+    if(opcao != 83 && opcao != 115){
 
         for(i = opcao; i <= tamanho; i++){      // Sobrepõe todos os carros de cima para baixo a partir do selecionado
             RemovidoADM[i - 1] = RemovidoADM[i];
@@ -96,7 +123,7 @@ void RemoverCarroADM(carro * RemovidoADM){
 
     }
 
-    LimpaTela();
+    LimpaTela(false);
 }
 
 

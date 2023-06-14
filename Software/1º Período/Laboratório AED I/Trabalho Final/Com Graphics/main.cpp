@@ -1,3 +1,5 @@
+#include <locale.h>
+
 #include "struct.h"
 #include "entrada.h"
 
@@ -22,6 +24,12 @@
               sistema.h
               usuario.h
               administrador.h
+
+
+- Botao de informacoes na tela inicial, com aquela imagem do photoshop
+- Captcha
+- Arrumar o dinheiro do usuário
+- Colocar a primeira letra em letra maiuscula no ADM REGISTRAR
    */
 
 // Criar um loop que percorre a ListaDeCarros e verifica se tem um Igual aos registrados com imagem, excluindo o preço
@@ -45,10 +53,12 @@ int main(){
         {"Honda", "Accord", 2023, 148210, false, false},
     };
 
+
     Entrada(ListaDeCarros);
     return 0;
 
 }
+
 
 /* Carros de Demonstração : (A marca, o Nome e o Ano devem ser iguais !!)
 
