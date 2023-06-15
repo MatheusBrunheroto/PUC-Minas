@@ -2,7 +2,6 @@
 #include "sistema.h"
 
 #include <stdio.h>
-#include <stdbool.h>
 #include <graphics.h>
 
 #include "entrada.h"
@@ -27,7 +26,7 @@ int Entrada(carro * ListaDeCarros){
            meio da janela, basta subtrair 400 pela metade de 480, que é 240. */  // ORT
 
         readimagefile(gif, 160, 0, 480 + 160, 146);
-        // delay(50);
+        delay(30);
 
     }
 

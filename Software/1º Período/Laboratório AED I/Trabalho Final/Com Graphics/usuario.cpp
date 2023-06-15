@@ -5,14 +5,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
 #include "usuario.h"
 
 
 /* A função "Usuario" mostra as primeiras opções após a entrada como usuário, e executa
    as opções determinadas pelos números na tela. Além disso, conta com um sistema de
-   dinheiro, que é resetado toda vez que o usuário volta para o menu principal */
+   dinheiro, que é resetado toda vez que o usuário volta para o menu principal. */
 
 void Usuario(carro * Disponiveis){
 
@@ -20,7 +19,7 @@ void Usuario(carro * Disponiveis){
     float dinheiro;
 
     printf("Insira seu dinheiro -> ");
-    scanf("%f",&dinheiro);
+    scanf("%f", &dinheiro);
     LimpaTela(false);
 
 
@@ -31,7 +30,7 @@ void Usuario(carro * Disponiveis){
         printf("[2] - Visualizar Carros\n");
         printf("[3] - Voltar\n\n");
         printf("Opção -> ");
-        scanf("%i",&opcao);
+        scanf("%i", &opcao);
 
         switch(opcao){
 
@@ -50,41 +49,34 @@ void Usuario(carro * Disponiveis){
     }while(opcao != 3);
 }
 
-// PENDENTE
+
+
+/* A função "VisualizarUsuario" exibe os carros disponíveis, e depende diretamente da função
+   "LoopOpcoes", que retorna 0, causando a saída da função "VisualizarUsuario",
+   ou retorna o valor da opção selecionada, se for maior que o tamanho de ListaDeCarros, o carro não existe. */
 
 void VisualizarUsuario(carro * Disponiveis){
 
-    char opcaoCHAR[2];
-    int  opcaoINT;
     int tamanho = Tamanho(Disponiveis);
+    int opcao;
+    opcao = LoopOpcoes(Disponiveis, false, 0, true);
 
-    while(strcmp(opcaoCHAR,"s") != 0){
+    if(opcao != 0){
+        while(opcao != 0){
 
-        LimpaTela(true);
-        Exibe(Disponiveis, false, 0);
-        printf("[S] - Sair \n\n\n",4);
+            if(opcao <= tamanho){
+                FotosCarros(Disponiveis, opcao);
+            }
+            else{
+                getchar();
+                printf("\nCarro Inexistente !!\n");
+                printf("Pressione ENTER para continuar ...");
+                getchar();
+            }
 
-        printf("Opção -> ");
-        scanf("%s", opcaoCHAR);
-        opcaoCHAR[0] = tolower(opcaoCHAR[0]);
+            opcao = LoopOpcoes(Disponiveis, false, 0, true);
 
-
-        if(strcmp(opcaoCHAR,"s") != 0)
-            opcaoINT = atoi(opcaoCHAR);    // Converter número em String para Int
-        else
-            break;
-
-
-        if(opcaoINT <= tamanho){
-            FotosCarros(Disponiveis,opcaoINT);
         }
-        else{
-            getchar();
-            printf("\nCarro Inexistente !!\n");
-            printf("Pressione ENTER para continuar ...");
-            getchar();
-        }
-
     }
 
     system("cls");
@@ -92,43 +84,36 @@ void VisualizarUsuario(carro * Disponiveis){
 }
 
 
-// PENDENTE
 
-float ComprarUsuario(carro * Disponiveis, float dinheiro){
+/* A função "ComprarUsuario" exibe os carros disponíveis, e depende diretamente da função
+   "LoopOpcoes", que retorna 0, causando a saída da função "ComprarUsuario",
+   ou retorna o valor da opção selecionada, se for maior que o tamanho de ListaDeCarros, o carro não existe.
+   Caso o carro exista, o dinheiro entra em ação, permitindo ou não a compra de um carro. */
 
-    char opcaoCHAR[2];
-    int  opcaoINT;
+ float ComprarUsuario(carro * Disponiveis, float dinheiro){
+
     int tamanho = Tamanho(Disponiveis);
+    int opcao;
+    opcao = LoopOpcoes(Disponiveis, true, dinheiro, false);
 
-    while(strcmp(opcaoCHAR,"s") != 0){
+    while(opcao != 0){
 
-        LimpaTela(false);
-        Exibe(Disponiveis, true, dinheiro);
-        printf("[S] - Sair \n\n\n",4);
+        if(opcao <= tamanho){
 
-        printf("Opção -> ");
-        scanf("%s", opcaoCHAR);
-        opcaoCHAR[0] = tolower(opcaoCHAR[0]);
-
-        if(strcmp(opcaoCHAR,"s") != 0)
-            opcaoINT = atoi(opcaoCHAR);    // Converter número em String para Int
-        else
-            break; // Da pra botar isso tudo em outra função?
-
-        if(opcaoINT <= tamanho){
-
-            if(Disponiveis[opcaoINT - 1].vendido == true)
+            if(Disponiveis[opcao - 1].vendido == true)
                 printf("\nO Carro ja foi vendido !!\n");
-            else if(dinheiro < Disponiveis[opcaoINT-1].preco)
+            else if(dinheiro < Disponiveis[opcao-1].preco)
                 printf("\nDinheiro Insuficiente !!\n");
             else{
-                Disponiveis[opcaoINT - 1].vendido = true;
-                dinheiro = dinheiro - Disponiveis[opcaoINT - 1].preco;
+                Disponiveis[opcao - 1].vendido = true;
+                dinheiro = dinheiro - Disponiveis[opcao - 1].preco;
             }
 
         }
         else
             printf("\nCarro Inexistente !!\n");
+
+        opcao = LoopOpcoes(Disponiveis, true, dinheiro, false);
 
     }
 

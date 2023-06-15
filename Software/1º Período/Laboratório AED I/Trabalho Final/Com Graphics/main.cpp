@@ -28,7 +28,6 @@
 
 - Botao de informacoes na tela inicial, com aquela imagem do photoshop
 - Captcha
-- Arrumar o dinheiro do usuário
 - Colocar a primeira letra em letra maiuscula no ADM REGISTRAR
    */
 
@@ -39,7 +38,7 @@ int main(){
 
     setlocale(LC_ALL, "Portuguese");
 
-    // Há 10 carros pré-alocados, tendo espaço para mais 10 serem adicionados pelo Administrador do sistema, caso deseje mais, basta mudar o valor do vetor.
+    // Há 10 carros pré-alocados, tendo espaço para mais 10 serem adicionados pelo Administrador do sistema.
     carro ListaDeCarros[20] = {
         {"Fiat", "Uno sem Escada", 1986, 10500, false, false},
         {"Fiat", "Uno com Escada", 1986, 13500, false, false},
@@ -73,5 +72,6 @@ int main(){
         {"Honda", "City", 2013},
         {"Honda", "Fit", 2010},
 
-*/
+   Esses carros devem ser inseridos pelo administrador corretamente, qualquer diferença com o que está
+   nessa tabela irá constar a imagem de demonstração como "não registrado". */
 

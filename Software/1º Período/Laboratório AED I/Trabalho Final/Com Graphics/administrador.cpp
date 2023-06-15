@@ -12,7 +12,7 @@
 void Administrador(carro * CarroADM){
 
     int tamanho = Tamanho(CarroADM);
-    int opcao, i = 0;                                  // A variável 'opcao' será inicialmente utilizada para inserir a senha, valor que logo após será reciclado.    printf("Senha : ");
+    int opcao, i = 0;                                  // A variável 'opcao' será inicialmente utilizada para inserir a senha, que será reciclada logo após.
 
     printf("Senha : ");
     if(scanf("%i", &opcao) != 1234)
@@ -41,7 +41,7 @@ void Administrador(carro * CarroADM){
         printf("[2] - Remover Carro\n");
         printf("[3] - Voltar\n\n");
         printf("Opção -> ");
-        scanf("%i",&opcao);
+        scanf("%i", &opcao);
 
         switch(opcao){
 
@@ -99,33 +99,36 @@ void RegistrarCarroADM(carro * NovoADM){
 
 
 
- // PENDENTE
+ /* A função "RemoverCarroADM" exibe os carros disponíveis, e depende diretamente da função
+   "LoopOpcoes", que retorna 0, causando a saída da função "RemoverCarroADM",
+   ou retorna o valor da opção selecionada, se for maior que o tamanho de ListaDeCarros, o carro não existe.
+   Caso o carro exista ele será removido. */
+
 void RemoverCarroADM(carro * RemovidoADM){
 
-    int tamanho = Tamanho(RemovidoADM);
-    int i, opcao;
-    bool Processo = false;
+    int tamanho;
+    int opcao, i;
 
-    LimpaTela(false);
-    Exibe(RemovidoADM, false, 0);
-    printf("[S] - Sair \n\n\n",4);
-    printf("Opção -> ");
-    scanf("%i",&opcao);
+    opcao = LoopOpcoes(RemovidoADM, false, 0, false);
 
-    if(opcao != 83 && opcao != 115){
+    while(opcao != 0){
 
-        for(i = opcao; i <= tamanho; i++){      // Sobrepõe todos os carros de cima para baixo a partir do selecionado
-            RemovidoADM[i - 1] = RemovidoADM[i];
-            Processo = true;
-        }
-        if(Processo == true)                    // Ao remover '20' sem a presença do mesmo, o último carro era removido
+        tamanho = Tamanho(RemovidoADM);
+
+        if(opcao <= tamanho){
+
+            for(i = opcao; i <= tamanho; i++){       // Sobrepõe todos os carros de cima para baixo a partir do selecionado
+                RemovidoADM[i - 1] = RemovidoADM[i];
+            }
+
             RemovidoADM[tamanho - 1].ano = 0;
 
-    }
+        }
+        else
+            printf("\nCarro Inexistente !!\n");
 
+        opcao = LoopOpcoes(RemovidoADM, false, 0, false);
+
+    }
     LimpaTela(false);
 }
-
-
-
-

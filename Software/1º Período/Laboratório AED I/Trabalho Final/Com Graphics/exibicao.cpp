@@ -37,7 +37,7 @@ void FotosCarros(carro * Disponiveis, int opcao){
 
 
     int i;
-    for(i = 0; i < tamanho - 1; i++){
+    for(i = 0; i < tamanho; i++){
 
         if(strcmp(Disponiveis[i].marca, Disponiveis[opcao - 1].marca) == 0){
             if(strcmp(Disponiveis[i].modelo, Disponiveis[opcao - 1].modelo) == 0){

@@ -2,22 +2,20 @@
 #include "entrada.h"
 #include "administrador.h"
 #include "usuario.h"
+#include "exibicao.h"
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "sistema.h"
-
-
-
 
 
 /* A função "Tamanho" recebe o vetor ListadeCarros, e através dele verifica
    os carros de (0 - 20). Eu defini como padrão de carro inexistente
    o ano = 0. Então todo carro cujo ano = 0 é invalido e o
-   comando 'break' é executado. */ // ORT
+   comando 'break' é executado. */
 
 int Tamanho(carro * Disponiveis){
 
@@ -36,18 +34,22 @@ int Tamanho(carro * Disponiveis){
 
 
 
+/* A função "LimpaTela", utiliza do comando system("cls"), que não necessariamente funcionará
+   em todos os sistemas operacionais ou compiladores, outra alternativa caso não funcione é
+   o comando system("clear"). */
+
 void LimpaTela(bool visualizacao){
 
-    /* Exibição = 0, Significa que o usuário está comprando um carro,
-     ou um administrador está removendo um carro. Pois requisita
-     a confirmação extra. E nos casos de Visualização de carros
-     por exemplo, não é requisitado a confirmação extra. */
+    /* Visualizacao = false significa que o usuário está comprando um carro,
+       ou um administrador está removendo um carro. Pois requisita
+       a confirmação extra. E nos casos de Visualização de carros
+       por exemplo, não é requisitado a confirmação extra. */
 
     if(visualizacao == false){
         printf("Pressione ENTER para continuar ...");
         getchar();
         getchar();
-        system("cls");                                // Talvez isso não funcione em todos os compiladores / sistemas operacionais
+        system("cls");
     }
     else{
         system("cls");
@@ -58,7 +60,7 @@ void LimpaTela(bool visualizacao){
 
 
 /* A função "Sistema" mostra as primeiras opções após a entrada no sistema, e executa
-   as opções determinadas pelos números na tela. */ // ORT
+   as opções determinadas pelos números na tela. */
 
 void Sistema(carro * ListaDeCarros){
     int opcao;
@@ -69,7 +71,7 @@ void Sistema(carro * ListaDeCarros){
         printf("[2] - Administrador\n");
         printf("[3] - Sair\n\n");
         printf("Opção -> ");
-        scanf("%i",&opcao);
+        scanf("%i", &opcao);
 
         LimpaTela(false);
 
@@ -93,8 +95,10 @@ void Sistema(carro * ListaDeCarros){
 
 /* A função "Exibe" mostra a tabela dos carros Disponíveis. A partir de valores alimentados na função
    é possível determinar se a exibição é de um usuário ou de um administrador, com isso, é possível configurá-la
-   de formas diferentes. Além disso, com as variáveis .vendido e .novo, é possível afirmar se o carro
-   é novo ou vendido, sendo que "vendido" sobrepõe "novo". */ // ORT
+   de formas diferentes. Além disso, com as variáveis  .vendido e  .novo, é possível afirmar se o carro
+   é novo ou vendido, sendo que 'vendido' sobrepõe 'novo'.
+   Anteriormente a função "LimpaTela" estava implementada dentro de "Exibe", porém foi conveniente tirá-la devido as diferentes formas
+   de limpar a tela que determinei, então a cada chamada de "Exibe" é necessário chamar "LimpaTela" antes. */
 
 void Exibe(carro * Disponiveis, bool Usuario, float dinheiro){
 
@@ -110,14 +114,14 @@ void Exibe(carro * Disponiveis, bool Usuario, float dinheiro){
             break;
 
         if(i >= 9){
-            printf("[%i] - ",i + 1);
+            printf("[%i] - ", i + 1);
             printf(" %-11s| ", Disponiveis[i].marca);
             printf(" %-20s| ", Disponiveis[i].modelo);
             printf(" %-4i | ", Disponiveis[i].ano);
             printf("R$ %-6.02f ", Disponiveis[i].preco);
         }
         else{
-            printf(" [%i] - ",i + 1);
+            printf(" [%i] - ", i + 1);
             printf(" %-11s| ", Disponiveis[i].marca);
             printf(" %-20s| ", Disponiveis[i].modelo);
             printf(" %-4i | ", Disponiveis[i].ano);
@@ -126,9 +130,9 @@ void Exibe(carro * Disponiveis, bool Usuario, float dinheiro){
 
 
         if(Disponiveis[i].vendido == true)
-            printf("%12s","(Vendido)");
+            printf("%13s", "(Vendido)");
         else if(Disponiveis[i].novo == true)
-            printf("%12s", "(Novo)");
+            printf("%13s", "(Novo)");
 
         printf("\n");
 
@@ -139,5 +143,33 @@ void Exibe(carro * Disponiveis, bool Usuario, float dinheiro){
 
 }
 
+// PENDENTE
 
+int LoopOpcoes(carro * Disponiveis, bool Usuario, float dinheiro, bool visualizacao){
+
+    char opcaoCHAR[3];
+    int  opcaoINT;
+
+    while(strcmp(opcaoCHAR,"s") != 0){
+
+        LimpaTela(visualizacao);
+        Exibe(Disponiveis, Usuario, dinheiro);
+        printf("[S] - Sair \n\n\n",4);
+
+        printf("Opção -> ");
+        scanf("%s", opcaoCHAR);
+        opcaoCHAR[0] = tolower(opcaoCHAR[0]);
+
+        if(strcmp(opcaoCHAR,"s") != 0){
+            opcaoINT = atoi(opcaoCHAR);
+            return opcaoINT;
+        }
+        else
+            break;
+
+    }
+
+    return 0;
+
+}
 
