@@ -1,0 +1,82 @@
+Carros Válidos ->
+Quando aparecer a tela :
+
+/* [1] - Registrar Carro
+   [2] - Remover Carro
+   [3] - Voltar
+
+   Opção -> */
+
+Não faça nada, apenas cole o que está abaixo, sem entrar em nenhuma opção :
+
+1
+
+Fiat
+Punto
+2014
+0
+
+1
+
+Fiat
+Palio
+2013
+0
+
+1
+
+Chevrolet
+Onix
+2020
+0
+
+1
+
+Chevrolet
+Spin
+2013
+0
+
+1
+
+Ford
+Eco Sport
+2016
+0
+
+1
+
+Ford
+Focus
+2014
+0
+
+1
+
+Volkswagen
+Polo
+2018
+0
+
+1
+
+Volkswagen
+Golf
+2016
+0
+
+1
+
+Honda
+City
+2013
+0
+
+1
+
+Honda
+Fit
+2010
+0
+
+3

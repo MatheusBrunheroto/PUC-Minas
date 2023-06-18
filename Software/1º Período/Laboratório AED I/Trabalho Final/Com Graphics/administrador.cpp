@@ -94,6 +94,7 @@ void RegistrarCarroADM(carro * NovoADM){
     LimpaTela(false);
 
     NovoADM[tamanho].novo = true;
+    NovoADM[tamanho].vendido = false;
 
 }
 

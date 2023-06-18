@@ -1,0 +1,37 @@
+Obviamente se a ordem dos carros forem mudadas isso dará errado,
+todos os comandos dessa pasta só funcionam no contexto dos testes de
+demonstração.
+
+Quando aparecer a tela :
+
+/* [1] - Registrar Carro
+   [2] - Remover Carro
+   [3] - Voltar
+
+   Opção -> */
+
+Não faça nada, apenas cole o que está abaixo, sem entrar em nenhuma opção :
+
+2
+
+11
+
+11
+
+11
+
+11
+
+11
+
+11
+
+11
+
+11
+
+11
+
+11
+
+s
