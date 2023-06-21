@@ -24,15 +24,13 @@
               sistema.h
               usuario.h
               administrador.h
+              exibicao.h
 
 
 - Botao de informacoes na tela inicial, com aquela imagem do photoshop
 - Captcha
 - Colocar a primeira letra em letra maiuscula no ADM REGISTRAR
    */
-
-// Criar um loop que percorre a ListaDeCarros e verifica se tem um Igual aos registrados com imagem, excluindo o preço
-
 
 int main(){
 
@@ -57,21 +55,3 @@ int main(){
     return 0;
 
 }
-
-
-/* Carros de Demonstração : (A marca, o Nome e o Ano devem ser iguais !!)
-
-        {"Fiat", "Punto", 2014},
-        {"Fiat", "Palio", 2013},
-        {"Chevrolet", "Onix", 2020},
-        {"Chevrolet", "Spin", 2013},
-        {"Ford", "Eco Sport", 2016},
-        {"Ford", "Focus", 2014},
-        {"Volkswagen", "Polo", 2018},
-        {"Volkswagen", "Golf", 2016},
-        {"Honda", "City", 2013},
-        {"Honda", "Fit", 2010},
-
-   Esses carros devem ser inseridos pelo administrador corretamente, qualquer diferença com o que está
-   nessa tabela irá constar a imagem de demonstração como "não registrado". */
-

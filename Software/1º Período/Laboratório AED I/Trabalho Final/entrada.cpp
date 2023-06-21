@@ -26,11 +26,11 @@ int Entrada(carro * ListaDeCarros){
            meio da janela, basta subtrair 400 pela metade de 480, que é 240. */  // ORT
 
         readimagefile(gif, 160, 0, 480 + 160, 146);
-        delay(30);
+        delay(10);
 
     }
 
-
+    readimagefile("Info.jpg", 15, 565, 20 + 15, 20 + 565);
     outtextxy(600,570,"© 2023 Matheus Brunheroto");                                     // (600,570) - Coordenadas para caber no canto inferior direito
 
 
@@ -55,24 +55,35 @@ int Entrada(carro * ListaDeCarros){
                 if(mousey() >= 240 && mousey() <= 280)  {           // Entrar (y1 - y2)
 
                     entrada = true;
-                    DesenhaBotao(280,240,520,280,"Entrar",true);
-                    delay(500);
-                    DesenhaBotao(280,240,520,280,"Entrar",false);
+                    DesenhaBotao(280,240,520,280,"Entrar", true);
+                    delay(200);
+                    DesenhaBotao(280,240,520,280,"Entrar", false);
 
                 }
                 else if(mousey() >= 310 && mousey() <= 350){        // Sair (y1 - y2)
 
                     printf("\nVolte Sempre ! \n");
-                    DesenhaBotao(280,310,520,350,"Sair",true);
-                    delay(500);
-                    DesenhaBotao(280,310,520,350,"Sair",false);
+                    DesenhaBotao(280,310,520,350,"Sair", true);
+                    delay(200);
+                    DesenhaBotao(280,310,520,350,"Sair", false);
 
-                    exit(0);                                       // Retorna 0 para 'main()', que consequentemente encerrará o programa.
+                    exit(0);                                       // Encerra o programa
 
                 }
             }
+            else if(mousex() >= 15 && mousex() <= 35 && mousey() >= 565 && mousey() <= 585){     // Botão (i)
 
+                readimagefile("Tabela.jpg", 0, 0, 800, 600);
+
+                 do{
+                }while(!kbhit());
+
+                closegraph();
+                Entrada(ListaDeCarros); // Retorna para o início
+
+            }
             clearmouseclick(WM_LBUTTONDOWN);
+
         }
 
     }while(entrada != true);
@@ -115,6 +126,6 @@ void DesenhaBotao(int x1, int y1, int x2, int y2, char palavra[7], bool inverte)
 
     setbkcolor(15);
     setcolor(0);
-    outtextxy(x1 + ((x2-x1-(strlen(palavra)*8))/2) + 2, y1+8, palavra);
+    outtextxy(x1 + ((x2-x1-(strlen(palavra)*8))/2) + 2, y1+8, palavra); // entender isso
 
 }

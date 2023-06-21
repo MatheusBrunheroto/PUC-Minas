@@ -143,7 +143,14 @@ void Exibe(carro * Disponiveis, bool Usuario, float dinheiro){
 
 }
 
-// PENDENTE
+
+
+/* A função "LoopOpcoes" serve para intermediar os processos de execução entre "Exibe" e a função
+   que a chamou, atuando como o seletor de opções.
+   Ela lê uma string de 2 caracteres, pois caso contrário não seria possível ler um eventual
+   número 10. Se a string lida for == "s" ou "S", a função retorna 0, caso contrário, retorna a
+   opção em inteiro para que as funções que chamaram "LoopOpcoes" executem o que foram designadas
+   a fazer. */
 
 int LoopOpcoes(carro * Disponiveis, bool Usuario, float dinheiro, bool visualizacao){
 
@@ -153,7 +160,7 @@ int LoopOpcoes(carro * Disponiveis, bool Usuario, float dinheiro, bool visualiza
     while(strcmp(opcaoCHAR,"s") != 0){
 
         LimpaTela(visualizacao);
-        Exibe(Disponiveis, Usuario, dinheiro);
+        Exibe(Disponiveis, Usuario, dinheiro);  // Buscar um nome melhor para usuario e visualizacao nessa funcao e em exibe
         printf("[S] - Sair \n\n\n",4);
 
         printf("Opção -> ");

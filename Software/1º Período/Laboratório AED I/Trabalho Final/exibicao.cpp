@@ -78,7 +78,7 @@ void FotosCarros(carro * Disponiveis, int opcao){
 
 
     do{
-    }while(getchar() != '\n' && !kbhit());
+    }while(getchar() != '\n');
 
     closegraph();
 
