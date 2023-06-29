@@ -110,7 +110,7 @@ void RemoverCarroADM(carro * RemovidoADM){
     int tamanho;
     int opcao, i;
 
-    opcao = LoopOpcoes(RemovidoADM, false, 0, false);
+    opcao = LoopOpcoes(RemovidoADM, 0, false);
 
     while(opcao != 0){
 
@@ -128,7 +128,7 @@ void RemoverCarroADM(carro * RemovidoADM){
         else
             printf("\nCarro Inexistente !!\n");
 
-        opcao = LoopOpcoes(RemovidoADM, false, 0, false);
+        opcao = LoopOpcoes(RemovidoADM, 0, false);
 
     }
     LimpaTela(false);

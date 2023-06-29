@@ -38,14 +38,14 @@ int Tamanho(carro * Disponiveis){
    em todos os sistemas operacionais ou compiladores, outra alternativa caso não funcione é
    o comando system("clear"). */
 
-void LimpaTela(bool visualizacao){
+void LimpaTela(bool ModoVisualizacao){
 
-    /* Visualizacao = false significa que o usuário está comprando um carro,
+    /* ModoVisualizacao = false significa que o usuário está comprando um carro,
        ou um administrador está removendo um carro. Pois requisita
        a confirmação extra. E nos casos de Visualização de carros
        por exemplo, não é requisitado a confirmação extra. */
 
-    if(visualizacao == false){
+    if(ModoVisualizacao == false){
         printf("Pressione ENTER para continuar ...");
         getchar();
         getchar();
@@ -100,18 +100,17 @@ void Sistema(carro * ListaDeCarros){
    Anteriormente a função "LimpaTela" estava implementada dentro de "Exibe", porém foi conveniente tirá-la devido as diferentes formas
    de limpar a tela que determinei, então a cada chamada de "Exibe" é necessário chamar "LimpaTela" antes. */
 
-void Exibe(carro * Disponiveis, bool Usuario, float dinheiro){
+void Exibe(carro * Disponiveis, float Dinheiro, bool ModoVisualizacao){
 
-    if(Usuario == true)
-        printf("Dinheiro -> R$ %0.2f\n\n", dinheiro);
+    int tamanho = Tamanho(Disponiveis);
+
+    if(ModoVisualizacao == false && Dinheiro != 0)
+        printf("Dinheiro -> R$ %0.2f\n\n", Dinheiro);
 
     printf("       Marca       |         Modelo       |  Ano  | Preço \n\n");
 
     int i;
-    for(i = 0; i < 20; i++){
-
-        if(Disponiveis[i].ano == 0)
-            break;
+    for(i = 0; i < tamanho; i++){
 
         if(i >= 9){
             printf("[%i] - ", i + 1);
@@ -152,15 +151,15 @@ void Exibe(carro * Disponiveis, bool Usuario, float dinheiro){
    opção em inteiro para que as funções que chamaram "LoopOpcoes" executem o que foram designadas
    a fazer. */
 
-int LoopOpcoes(carro * Disponiveis, bool Usuario, float dinheiro, bool visualizacao){
+int LoopOpcoes(carro * Disponiveis, float Dinheiro, bool ModoVisualizacao){
 
-    char opcaoCHAR[3];
+    char opcaoCHAR[3] = " ";
     int  opcaoINT;
 
-    while(strcmp(opcaoCHAR,"s") != 0){
+    while(strcmp(opcaoCHAR, "s") != 0){
 
-        LimpaTela(visualizacao);
-        Exibe(Disponiveis, Usuario, dinheiro);  // Buscar um nome melhor para usuario e visualizacao nessa funcao e em exibe
+        LimpaTela(ModoVisualizacao);
+        Exibe(Disponiveis, Dinheiro, ModoVisualizacao);  // Buscar um nome melhor para usuario e visualizacao nessa funcao e em exibe
         printf("[S] - Sair \n\n\n",4);
 
         printf("Opção -> ");

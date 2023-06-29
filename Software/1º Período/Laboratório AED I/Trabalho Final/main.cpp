@@ -26,18 +26,20 @@
               administrador.h
               exibicao.h
 
+    Link da apresentação do projeto -> https://youtu.be/v0O3TVWdEzg
+    Link da apresentação da alteração que realizei após a gravação do vídeo acima -> https://youtu.be/rkNue_pTLms
 
-- Botao de informacoes na tela inicial, com aquela imagem do photoshop
-- Captcha
-- Colocar a primeira letra em letra maiuscula no ADM REGISTRAR
-   */
+*/
+
 
 int main(){
 
     setlocale(LC_ALL, "Portuguese");
 
     // Há 10 carros pré-alocados, tendo espaço para mais 10 serem adicionados pelo Administrador do sistema.
+
     carro ListaDeCarros[20] = {
+
         {"Fiat", "Uno sem Escada", 1986, 10500, false, false},
         {"Fiat", "Uno com Escada", 1986, 13500, false, false},
         {"Chevrolet", "Camaro Amarelo", 2010, 516200, false, false},
@@ -48,6 +50,17 @@ int main(){
         {"Volkswagen", "Gol", 1984, 78160, false, false},
         {"Honda", "Civic SI", 2009, 60500, false, false},
         {"Honda", "Accord", 2023, 148210, false, false},
+
+        {"Nulo", "Nulo", 0, 0, false},
+        {"Nulo", "Nulo", 0, 0, false},
+        {"Nulo", "Nulo", 0, 0, false},
+        {"Nulo", "Nulo", 0, 0, false},
+        {"Nulo", "Nulo", 0, 0, false},
+        {"Nulo", "Nulo", 0, 0, false},
+        {"Nulo", "Nulo", 0, 0, false},
+        {"Nulo", "Nulo", 0, 0, false},
+        {"Nulo", "Nulo", 0, 0, false},
+        {"Nulo", "Nulo", 0, 0, false}
     };
 
 

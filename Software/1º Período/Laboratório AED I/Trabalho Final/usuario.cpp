@@ -59,7 +59,7 @@ void VisualizarUsuario(carro * Disponiveis){
 
     int tamanho = Tamanho(Disponiveis);
     int opcao;
-    opcao = LoopOpcoes(Disponiveis, false, 0, true);
+    opcao = LoopOpcoes(Disponiveis, 0, true);
 
     if(opcao != 0){
         while(opcao != 0){
@@ -74,7 +74,7 @@ void VisualizarUsuario(carro * Disponiveis){
                 getchar();
             }
 
-            opcao = LoopOpcoes(Disponiveis, false, 0, true);
+            opcao = LoopOpcoes(Disponiveis, 0, true);
 
         }
     }
@@ -90,11 +90,11 @@ void VisualizarUsuario(carro * Disponiveis){
    ou retorna o valor da opção selecionada, se for maior que o tamanho de ListaDeCarros, o carro não existe.
    Caso o carro exista, o dinheiro entra em ação, permitindo ou não a compra de um carro. */
 
- float ComprarUsuario(carro * Disponiveis, float dinheiro){
+ float ComprarUsuario(carro * Disponiveis, float Dinheiro){
 
     int tamanho = Tamanho(Disponiveis);
     int opcao;
-    opcao = LoopOpcoes(Disponiveis, true, dinheiro, false);
+    opcao = LoopOpcoes(Disponiveis, Dinheiro, false);
 
     while(opcao != 0){
 
@@ -102,22 +102,22 @@ void VisualizarUsuario(carro * Disponiveis){
 
             if(Disponiveis[opcao - 1].vendido == true)
                 printf("\nO Carro ja foi vendido !!\n");
-            else if(dinheiro < Disponiveis[opcao-1].preco)
+            else if(Dinheiro < Disponiveis[opcao-1].preco)
                 printf("\nDinheiro Insuficiente !!\n");
             else{
                 Disponiveis[opcao - 1].vendido = true;
-                dinheiro = dinheiro - Disponiveis[opcao - 1].preco;
+                Dinheiro = Dinheiro - Disponiveis[opcao - 1].preco;
             }
 
         }
         else
             printf("\nCarro Inexistente !!\n");
 
-        opcao = LoopOpcoes(Disponiveis, true, dinheiro, false);
+        opcao = LoopOpcoes(Disponiveis, Dinheiro, false);
 
     }
 
     LimpaTela(false);
-    return dinheiro;
+    return Dinheiro;
 
 }

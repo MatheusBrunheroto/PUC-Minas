@@ -1,8 +1,8 @@
 int Tamanho(carro * Disponiveis);
-void LimpaTela(bool visualizacao);
+void LimpaTela(bool ModoVisualizacao);
 void Sistema(carro * ListaDeCarros);
-void Exibe(carro * Disponiveis, bool Usuario, float dinheiro);
-int LoopOpcoes(carro * Disponiveis, bool Usuario, float dinheiro, bool visualizacao);
+void Exibe(carro * Disponiveis, float Dinheiro, bool ModoVisualizacao);
+int LoopOpcoes(carro * Disponiveis, float Dinheiro, bool ModoVisualizacao);
 
 
 
