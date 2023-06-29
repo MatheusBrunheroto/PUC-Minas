@@ -6,17 +6,17 @@
 
 /* Projeto Final AED I Matheus Brunheroto
    Objetivo : criar um sistema de venda de carros utilizando
-   laços condicionais e de repetição, estruturas de alocação estática,
-   registros, funções e modo gráfico.
-   No meu projeto será possível adicionar carros para o seu sistema, como
-   administrador e como usuário comprar. Isso enquanto sua execução não for interrompida,
-   pois o projeto não requer armazenamento em memória secundária. Terei que
-   usar o básico dos ponteiros, pois nesse caso não faz sentido trabalhar
+   laÃ§os condicionais e de repetiÃ§Ã£o, estruturas de alocaÃ§Ã£o estÃ¡tica,
+   registros, funÃ§Ãµes e modo grÃ¡fico.
+   No meu projeto serÃ¡ possÃ­vel adicionar carros para o seu sistema, como
+   administrador e como usuÃ¡rio comprar. Isso enquanto sua execuÃ§Ã£o nÃ£o for interrompida,
+   pois o projeto nÃ£o requer armazenamento em memÃ³ria secundÃ¡ria. Terei que
+   usar o bÃ¡sico dos ponteiros, pois nesse caso nÃ£o faz sentido trabalhar
    sem eles.
 
-   Conforme fui fazendo o código, notei a necessidade de dividir as funções em
-   headers, pois estava difícil trabalhar em algo específico dentro de um ambiente
-   com mais de 600 linhas de código.
+   Conforme fui fazendo o cÃ³digo, notei a necessidade de dividir as funÃ§Ãµes em
+   headers, pois estava difÃ­cil trabalhar em algo especÃ­fico dentro de um ambiente
+   com mais de 600 linhas de cÃ³digo.
 
    Headers ->
               struct.h
@@ -26,8 +26,8 @@
               administrador.h
               exibicao.h
 
-    Link da apresentação do projeto -> https://youtu.be/v0O3TVWdEzg
-    Link da apresentação da alteração que realizei após a gravação do vídeo acima -> https://youtu.be/rkNue_pTLms
+    Link da apresentaÃ§Ã£o do projeto -> https://youtu.be/v0O3TVWdEzg
+    Link da apresentaÃ§Ã£o da alteraÃ§Ã£o que realizei apÃ³s a gravaÃ§Ã£o do vÃ­deo acima -> https://youtu.be/rkNue_pTLms
 
 */
 
@@ -36,7 +36,7 @@ int main(){
 
     setlocale(LC_ALL, "Portuguese");
 
-    // Há 10 carros pré-alocados, tendo espaço para mais 10 serem adicionados pelo Administrador do sistema.
+    // HÃ¡ 10 carros prÃ©-alocados, tendo espaÃ§o para mais 10 serem adicionados pelo Administrador do sistema.
 
     carro ListaDeCarros[20] = {
 
@@ -61,6 +61,7 @@ int main(){
         {"Nulo", "Nulo", 0, 0, false},
         {"Nulo", "Nulo", 0, 0, false},
         {"Nulo", "Nulo", 0, 0, false}
+   
     };
 
 
